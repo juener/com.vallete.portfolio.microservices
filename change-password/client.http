@@ -1,0 +1,12 @@
+@baseUrl = http://localhost:3333
+
+### PUT /users/change_password ###
+# @name change_password
+PUT {{baseUrl}}/users/change-password
+Content-Type: application/json
+
+{
+  "uid": "123456789", 
+  "oldPassword": "oldPassword@123", 
+  "newPassword": "newStrongPass321@@"
+}
