@@ -1,3 +1,27 @@
+# WIA Project with AdonisJS
+
+## TODO:
+- [x] generate and validate JWT
+- [ ] JWT with roles
+- [x] set the docker up
+- [x] connection with database 
+- [ ] crud user
+- [x] /autoridade-tributaria/change-password 
+- [ ] Reimplement from personalized errors to native error
+
+### 20290926
+- I created the layer services to separate the controllers and services
+- I created the connection with the Postgresql 
+- I set the docker up 
+- I changed the /autoridade-tributaria endpoint
+- I created the /session/login to generate JWT
+- I implemented the isAuthenticated on the endpoints which require be authenticated
+- 
+- I will change the way the personalized errors were created, and use the native way 
+- I will remove the response codes from the controller and integrate the errors with them 
+- I will integrate the roles, despite I am already sending the roles through token 
+
+### 20240924
 Feature: Change the password from the Autoridade Tributária (Portugal)
 
 Original request:
@@ -25,7 +49,6 @@ Problems:
 
 Libraries:
 - npm init adonisjs@latest change-password -- --kit=api --auth-guard=access_tokens 
-- npm i zod
 - npm i puppeteer
 
 Calls:

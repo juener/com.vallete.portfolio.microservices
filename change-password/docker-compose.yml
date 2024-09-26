@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  wia-postgresql:
+    image: bitnami/postgresql
+    ports:
+      - ${DB_PORT}:5432
+    environment:
+      - POSTGRESQL_USERNAME=${DB_USER}
+      - POSTGRESQL_PASSWORD=${DB_PASSWORD}
+      - POSTGRESQL_DATABASE=${DB_DATABASE}
+    env_file:
+      - .env
+    # volumes:
+      # - postgres_data:/var/lib/postgresql/data

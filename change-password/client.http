@@ -1,12 +1,38 @@
-@baseUrl = http://localhost:3333
+@baseUrl = http://localhost:49245
 
-### PUT /users/change_password ###
-# @name change_password
-PUT {{baseUrl}}/users/change-password
+### 
+# @name post:user
+POST {{baseUrl}}/users
 Content-Type: application/json
 
 {
-  "uid": "123456789", 
+  "fullName": "JohnDoe", 
+  "email": "johndoe@wia.com",
+  "password": "Pass123@"
+}
+
+### 
+# @name post_session_login
+POST {{baseUrl}}/session/login
+Content-Type: application/json
+
+{
+  "email": "johndoe@wia.com", 
+  "password": "Pass123@"
+}
+
+###
+@authToken = {{post_session_login.response.body.token.token}}
+
+
+### 
+# @name put:autoridade-tributaria/change-password
+PUT {{baseUrl}}/autoridade-tributaria/change-password
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "uid": "123456700", 
   "oldPassword": "oldPassword@123", 
   "newPassword": "newStrongPass321@@"
 }

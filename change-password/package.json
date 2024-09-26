@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node bin/server.js",
     "build": "node ace build",
-    "dev": "node ace serve --hmr",
+    "dev": "node ace serve --hmr --port=3333",
     "test": "node ace test",
     "lint": "eslint .",
     "format": "prettier --write .",
@@ -59,8 +59,7 @@
     "luxon": "^3.5.0",
     "pg": "^8.13.0",
     "puppeteer": "^23.4.0",
-    "reflect-metadata": "^0.2.2",
-    "zod": "^3.23.8"
+    "reflect-metadata": "^0.2.2"
   },
   "hotHook": {
     "boundaries": [

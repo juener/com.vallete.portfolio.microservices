@@ -8,7 +8,7 @@ interface ChangePasswordInterface {
   newPassword: string
 }
 
-export default class UsersService {
+export default class AutoridadeTributariaService {
   async changePassword({ uid, oldPassword, newPassword }: ChangePasswordInterface) {
     let browser
 
