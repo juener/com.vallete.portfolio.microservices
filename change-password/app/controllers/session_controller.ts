@@ -13,7 +13,7 @@ export default class SessionController {
 
       return response.status(200).send({ token })
     } catch (error) {
-      return response.status(500).send({ errors: error.message })
+      throw error
     }
   }
 }

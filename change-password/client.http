@@ -1,15 +1,4 @@
-@baseUrl = http://localhost:49245
-
-### 
-# @name post:user
-POST {{baseUrl}}/users
-Content-Type: application/json
-
-{
-  "fullName": "JohnDoe", 
-  "email": "johndoe@wia.com",
-  "password": "Pass123@"
-}
+@baseUrl = http://localhost:3339
 
 ### 
 # @name post_session_login
@@ -25,8 +14,51 @@ Content-Type: application/json
 @authToken = {{post_session_login.response.body.token.token}}
 
 
+
 ### 
-# @name put:autoridade-tributaria/change-password
+# @name get_user
+GET {{baseUrl}}/users/1
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+}
+
+### 
+# @name get_users
+GET {{baseUrl}}/users
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+}
+
+### 
+# @name post_user
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+  "fullName": "JohnDoe", 
+  "email": "johndoe2@wia.com",
+  "password": "Pass123@"
+}
+
+### 
+# @name put_user
+PUT {{baseUrl}}/users
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "id": 48,
+  "fullName": "Maria", 
+  "email": "maria@wia.com",
+  "password": "NewPass123@"
+}
+
+### 
+# @name put_autoridade-tributaria_change-password
 PUT {{baseUrl}}/autoridade-tributaria/change-password
 Content-Type: application/json
 Authorization: Bearer {{authToken}}

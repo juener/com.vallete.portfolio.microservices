@@ -1,15 +1,23 @@
 # WIA Project with AdonisJS
 
 ## TODO:
-- [x] generate and validate JWT
-- [ ] JWT with roles
-- [x] set the docker up
-- [x] connection with database 
-- [ ] crud user
+- [x] Generate and validate JWT
+- [ ] JWT with roles 
+- [x] Set the docker up
+- [x] Connection with database 
+- [x] CRUD user
 - [x] /autoridade-tributaria/change-password 
-- [ ] Reimplement from personalized errors to native error
+- [x] Reimplement from personalized errors to native error
+- [ ] Implement Swagger or similar
+- [ ] Implement unit and functional tests
 
-### 20290926
+### 20240927
+- I implemented the whole crud for the user entity
+- I implemented the exceptions handler and its response codes 
+
+The requester didn't let me know what is the purpose of this project, and they need to let me know whether they want to implement the other tasks (roles, swagger, tests, etc) since the requester already sent another task to do.
+
+### 20240926
 - I created the layer services to separate the controllers and services
 - I created the connection with the Postgresql 
 - I set the docker up 

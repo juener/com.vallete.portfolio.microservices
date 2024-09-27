@@ -27,7 +27,11 @@ router.post('/session/login', [SessionController, 'login'])
 /*
     /users
 */
+router.get('/users/:id', [UsersController, 'getUser'])
+router.get('/users', [UsersController, 'getUsers'])
 router.post('/users', [UsersController, 'post'])
+router.put('/users', [UsersController, 'put'])
+router.delete('/users/:id', [UsersController, 'delete'])
 
 /*
     /users

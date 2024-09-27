@@ -1,6 +1,6 @@
+import ThirdAppException from '#exceptions/third_app_exception'
 import env from '#start/env'
 import puppeteer from 'puppeteer'
-import UnauthorizedError from '../errors/unauthorized_error.js'
 
 interface ChangePasswordInterface {
   uid: string
@@ -50,8 +50,7 @@ export default class AutoridadeTributariaService {
         const formErrorExtractedText = formError
           ? await page.evaluate((el) => el.innerText, formError)
           : ''
-
-        throw new UnauthorizedError(`${usernameErrorExtractedText} ${formErrorExtractedText}`)
+        throw new ThirdAppException(`${usernameErrorExtractedText} ${formErrorExtractedText}`)
       }
 
       await page.waitForSelector('#changePassword')
@@ -63,6 +62,8 @@ export default class AutoridadeTributariaService {
 
       await page.waitForSelector('.user-quit a')
       await page.click('.user-quit a')
+
+      return
     } catch (error) {
       throw error
     } finally {

@@ -1,6 +1,6 @@
 import User from '#models/user'
 import hash from '@adonisjs/core/services/hash'
-import UnauthorizedError from '../errors/unauthorized_error.js'
+import { errors as authErrors } from '@adonisjs/auth'
 
 interface LoginInterface {
   email: string
@@ -12,12 +12,12 @@ export default class SessionService {
     try {
       const user = await User.findBy('email', email)
       if (!user) {
-        throw new UnauthorizedError('Email or password is not valid.')
+        throw new authErrors.E_INVALID_CREDENTIALS()
       }
 
       const isPasswordValid = await hash.verify(user.password, password)
       if (!isPasswordValid) {
-        throw new UnauthorizedError('Email or password is not valid.')
+        throw new authErrors.E_INVALID_CREDENTIALS()
       }
 
       const token = await User.accessTokens.create(user, ['server:create', 'server:read', '*'], {
@@ -29,7 +29,6 @@ export default class SessionService {
       }
     } catch (error) {
       throw error
-    } finally {
     }
   }
 }
