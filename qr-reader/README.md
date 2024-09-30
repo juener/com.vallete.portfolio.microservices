@@ -10,6 +10,10 @@
 - It's able to read good quality of QRCodes, but, may be a problem low quality qrcodes;
 - I implemented a translation of the content of the qrcode in a readble JSON.
 
+### How to invoke it
+![](./public/postman.png)
+
+
 Original request:
 " Para o ficheiro que está em anexo, deves ler o QRCode e obter a informação deste.
 A informação da informação está em: https://info.portaldasfinancas.gov.pt/pt/apoio_contribuinte/Novas_regras_faturacao/Documents/Especificacoes_Tecnicas_Codigo_QR.pdf

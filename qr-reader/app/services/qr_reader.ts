@@ -1,6 +1,9 @@
 import jsqr from 'jsqr'
-import fs from 'node:fs'
 import sharp from 'sharp'
+import { join } from 'node:path'
+import { promises as fs } from 'node:fs'
+import { convert } from 'pdf-poppler'
+import os from 'node:os'
 
 interface QrReaderRequest {
   library: string
@@ -60,6 +63,8 @@ export default class QrReaderService {
       throw new Error('Failed to process image')
     }
 
+    console.log(image)
+
     const qr = library === 'zxing' ? () => 1 + 1 : await this.readWithJsqr({ attempts, image })
 
     if (!qr) {
@@ -110,11 +115,33 @@ export default class QrReaderService {
     throw new Error('Failed to read QR code after all attempts')
   }
 
-  async convertPdfToPng(file: any): Promise<{ buffer: Buffer; tmpPath?: string }> {
+  async convertPdfToPng(file: any): Promise<{ tmpPath: string }> {
     if (file.extname !== 'pdf') {
-      return { buffer: file.buffer, tmpPath: file.tmpPath }
+      return { tmpPath: file.tmpPath }
     }
 
-    throw new Error('Not available reading of PDF files.')
+    const outputDir = os.tmpdir()
+    const outputFile = join(outputDir, `${file.clientName.replace('.pdf', '')}-1.png`)
+
+    try {
+      await fs.mkdir(outputDir, { recursive: true })
+
+      await convert(file.tmpPath, {
+        format: 'png',
+        out_dir: outputDir,
+        out_prefix: file.clientName.replace('.pdf', ''),
+        // page: 1,
+        dpi: 4600,
+        // printBackground: true,
+        // graphicsMagick: true,
+        antialiasing: 4,
+        density: 4600,
+        quality: 100,
+      })
+
+      return { tmpPath: outputFile }
+    } catch (error) {
+      throw new Error('Failed to convert PDF to PNG')
+    }
   }
 }
