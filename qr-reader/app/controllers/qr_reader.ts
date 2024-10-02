@@ -2,7 +2,7 @@ import QrReaderService from '#services/qr_reader'
 import { qrReaderValidator } from '#validators/qr_reader_validator'
 import { HttpContext } from '@adonisjs/core/http'
 
-export default class QrReaderController {
+export default class QrReaderControllerX {
   async post({ request, response }: HttpContext) {
     const libraryParam = request.input('library', 'jsqr')
     const optionsJson = request.input('options', '{ resize: 1200, threshold: 140 }')

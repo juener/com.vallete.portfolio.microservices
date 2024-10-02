@@ -2,8 +2,15 @@
 
 ## 
 - [x] Read PNG QRCodes inside a receipt;
-- [ ] Also read PDF with the same kind of content;
-- [ ] Read QRCodes even in a bad quality.
+- [x] Also read PDF with the same kind of content;
+- [ ] Read QRCodes even in a bad quality;
+- [x] OCR a PDF document;
+- [ ] OCR a PDF document which was scanned, and if it's needed convert to PNG to OCR it.
+
+### 20241001
+- I implemented an OCR on PDF files and I got it when the PDF was made by some document;
+- I tried to implement an OCR on PDF files when the doc was scanned, however, it's not available yet
+- I implemented a PDF conversion to PNG, and tried to read the QRCode and OCR the image, but for this process it lost some quality and it was not possible to read the QRCode or OCR it.
 
 ### 20240928
 - I implemented a qrcode reader using PNG images;
