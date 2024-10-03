@@ -3,6 +3,7 @@ import os from 'node:os'
 import { join } from 'node:path'
 import { convert } from 'pdf-poppler'
 import Tesseract from 'tesseract.js'
+import { atcudExtractor } from '../utils/atcud_extractor.js'
 
 interface OcrReaderRequest {
   file: any
@@ -17,7 +18,7 @@ export default class OcrReaderService {
     }
 
     const ocrText = await performOCR(pngPath)
-    const atcudExtracted = extractAtcud(ocrText)
+    const atcudExtracted = atcudExtractor(ocrText)
 
     return { atcudExtracted }
   }
@@ -51,13 +52,6 @@ async function performOCR(imagePath: string): Promise<string> {
 
   const result = await Tesseract.recognize(imagePath, 'por+eng')
 
-  console.log(result.data.text)
+  // console.log(result.data.text)
   return result.data.text
-}
-
-function extractAtcud(text: string): string | null {
-  const regex = /ATCUD:\s*([A-Z0-9-]+)/
-  const match = text.match(regex)
-
-  return match ? match[1] : null
 }

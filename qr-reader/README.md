@@ -1,11 +1,18 @@
 # WIA Read QRCode Project
 
+Use the /app/validators/ocr_pdf_validator.ts to set the body / form-data (file + options)
+
 ## 
 - [x] Read PNG QRCodes inside a receipt;
 - [x] Also read PDF with the same kind of content;
 - [ ] Read QRCodes even in a bad quality;
 - [x] OCR a PDF document;
-- [ ] OCR a PDF document which was scanned, and if it's needed convert to PNG to OCR it.
+- [x] OCR a PDF document which was scanned, and if it's needed convert to PNG to OCR it.
+
+### 20241002
+- I implemented an OCR on PDF files and got it even if the PDF origin came from an image;
+- I implemented an OCR on PDF files even if the PDF has more than one page;
+- I implemented a set of options as contrast, brightness, scale to get better results
 
 ### 20241001
 - I implemented an OCR on PDF files and I got it when the PDF was made by some document;
